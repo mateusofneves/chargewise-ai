@@ -1,5 +1,0 @@
-openai
-langchain
-fastapi
-uvicorn
-python-dotenv
