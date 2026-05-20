@@ -109,11 +109,11 @@ A estrutura criada também prepara o projeto para futuras integrações com APIs
 ```text
 Usuário
    ↓
-Chatbot ChargeWise AI
+Interface do Chatbot
    ↓
-Processamento da Pergunta
+System Prompt + Contexto
    ↓
-Contexto Operacional
+LLM Ollama (Llama 3.2)
    ↓
 Geração da Resposta
    ↓
