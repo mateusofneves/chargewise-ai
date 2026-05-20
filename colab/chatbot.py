@@ -1,7 +1,36 @@
+import subprocess
+import time
+from IPython.display import clear_output
+
+# instalando ollama no colab
+# instala dependencia necessaria
+!apt-get install -y zstd -q
+
+# instala o Ollama
+!curl -fsSL https://ollama.com/install.sh | sh
+
+# inicia o servidor Ollama em background
+subprocess.Popen(
+    ["ollama", "serve"],
+    stdout=subprocess.DEVNULL,
+    stderr=subprocess.DEVNULL
+)
+
+# aguarda o servidor iniciar
+time.sleep(10)
+
+print("🟢 Servidor Ollama iniciado!")
+
+# instala SDK Python
 !pip install -q ollama
 
-from IPython.display import clear_output
+# baixa o modelo (executa apenas na primeira vez)
+!ollama pull llama3.2:1b
+
+# importa biblioteca
 import ollama
+
+print("✅ Modelo carregado com sucesso!")
 
 # system prompt
 SYSTEM_PROMPT = """
@@ -38,7 +67,7 @@ Priorize:
 - experiência do usuário
 """
 
-# contexto / base de conhecimento
+# contexto / base
 contexto = """
 INFORMAÇÕES DO SISTEMA:
 
@@ -72,14 +101,14 @@ def perguntar_chatbot(pergunta):
 BASE DE DADOS:
 {contexto}
 
-PERGUNTA DO USUÁRIO:
+PERGUNTA DO USUARIO:
 {pergunta}
 """
 
     try:
 
         resposta = ollama.chat(
-            model="llama3",
+            model="llama3.2:1b",
             messages=[
                 {
                     "role": "user",
@@ -96,9 +125,9 @@ PERGUNTA DO USUÁRIO:
 Erro ao conectar com o Ollama.
 
 Verifique se:
-- o Ollama está instalado;
-- o modelo llama3 foi baixado;
-- o serviço do Ollama está rodando.
+- o Ollama esta instalado;
+- o modelo foi baixado corretamente;
+- o servidor Ollama esta ativo.
 
 Detalhes do erro:
 {erro}
@@ -111,16 +140,15 @@ print("=" * 50)
 print("⚡ CHARGEWISE AI")
 print("=" * 50)
 
-print("\nAssistente inteligente para gestão")
+print("\nAssistente inteligente para gestao")
 print("de carregadores veiculares.\n")
 
 print("Digite 'sair' para encerrar.\n")
 
 # loop principal
-
 while True:
 
-    pergunta = input("👤 Você: ")
+    pergunta = input("👤 Voce: ")
 
     if pergunta.lower() == "sair":
 
@@ -133,4 +161,3 @@ while True:
     print(resposta)
 
     print("\n" + "-" * 50 + "\n")
-```
