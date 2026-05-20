@@ -1,65 +1,92 @@
-!pip install openai
+!pip install ollama
 
 from IPython.display import clear_output
+import ollama
 
 # system prompt
 SYSTEM_PROMPT = """
 Você é o ChargeWise AI, um assistente inteligente especializado
-na gestão de carregadores veiculares elétricos em condomínios.
+na gestão comercial de estações de recarga para veículos elétricos.
+
+Seu objetivo é auxiliar operadores comerciais e usuários com:
+
+- disponibilidade de carregadores
+- sessões de recarga
+- consumo energético
+- status operacional
+- balanceamento de potência
+- horários recomendados
+- dúvidas sobre eletropostos
+
+Responda de forma:
+
+- clara
+- objetiva
+- profissional
+- segura
+
+Nunca invente informações.
+
+Caso não saiba algo, informe que o sistema não possui
+dados suficientes para responder.
+
+Priorize:
+
+- segurança elétrica
+- eficiência energética
+- estabilidade operacional
+- experiência do usuário
 """
 
-# base das respostas (treino)
-respostas = {
+# json para dar contexto à ia
+contexto = """
+INFORMAÇÕES DO SISTEMA:
 
-    "carregadores": """
-Atualmente existem 2 carregadores disponíveis no condomínio.
-""",
+- Existem 2 carregadores disponíveis no condomínio.
 
-    "melhor horário": """
-O melhor horário para recarga é entre 22h e 6h,
+- O melhor horário para recarga é entre 22h e 6h,
 quando a demanda energética é menor.
-""",
 
-    "sobrecarga": """
-Sim. O sistema realiza balanceamento inteligente
-de potência para evitar sobrecarga elétrica.
-""",
+- O sistema possui balanceamento inteligente de potência
+para evitar sobrecarga elétrica.
 
-    "tempo": """
-O tempo médio de recarga varia entre 2 e 6 horas,
+- O tempo médio de recarga varia entre 2 e 6 horas,
 dependendo da bateria do veículo.
-""",
 
-    "qualquer carregador": """
-O uso depende das regras internas do condomínio
-e da disponibilidade atual.
-""",
+- O uso dos carregadores depende das regras internas
+do condomínio e da disponibilidade atual.
 
-    "app": """
-Verifique se o carregador está conectado corretamente
-à rede do condomínio e tente atualizar o aplicativo.
-""",
+- Caso o aplicativo apresente falhas,
+verifique a conexão do carregador com a rede.
 
-    "consumo": """
-O sistema monitora o consumo energético para evitar
-sobrecarga e melhorar a eficiência da recarga.
+- O sistema monitora o consumo energético
+para melhorar a eficiência da recarga.
 """
-}
 
-# funcao do chat bot
+# funcao principal
 def perguntar_chatbot(pergunta):
 
-    pergunta_lower = pergunta.lower()
+    prompt = f"""
+{SYSTEM_PROMPT}
 
-    for chave in respostas:
+BASE DE DADOS:
+{contexto}
 
-        if chave in pergunta_lower:
-
-            return respostas[chave]
-
-    return """
-Desculpe, não encontrei essa informação no sistema.
+PERGUNTA DO USUÁRIO:
+{pergunta}
 """
+
+    resposta = ollama.chat(
+        model="llama3",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+    )
+
+    return resposta["message"]["content"]
 
 # interface
 clear_output()
@@ -79,7 +106,6 @@ while True:
     pergunta = input("👤 Você: ")
 
     if pergunta.lower() == "sair":
-
         print("\n🔌 Encerrando ChargeWise AI...")
         break
 
