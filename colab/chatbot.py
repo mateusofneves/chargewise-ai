@@ -1,4 +1,4 @@
-!pip install ollama
+!pip install -q ollama
 
 from IPython.display import clear_output
 import ollama
@@ -38,7 +38,7 @@ Priorize:
 - experiência do usuário
 """
 
-# json para dar contexto à ia
+# contexto / base de conhecimento
 contexto = """
 INFORMAÇÕES DO SISTEMA:
 
@@ -63,7 +63,7 @@ verifique a conexão do carregador com a rede.
 para melhorar a eficiência da recarga.
 """
 
-# funcao principal
+# funcao principal chatbot
 def perguntar_chatbot(pergunta):
 
     prompt = f"""
@@ -76,17 +76,33 @@ PERGUNTA DO USUÁRIO:
 {pergunta}
 """
 
-    resposta = ollama.chat(
-        model="llama3",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
+    try:
 
-    return resposta["message"]["content"]
+        resposta = ollama.chat(
+            model="llama3",
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
+
+        return resposta["message"]["content"]
+
+    except Exception as erro:
+
+        return f"""
+Erro ao conectar com o Ollama.
+
+Verifique se:
+- o Ollama está instalado;
+- o modelo llama3 foi baixado;
+- o serviço do Ollama está rodando.
+
+Detalhes do erro:
+{erro}
+"""
 
 # interface
 clear_output()
@@ -101,11 +117,13 @@ print("de carregadores veiculares.\n")
 print("Digite 'sair' para encerrar.\n")
 
 # loop principal
+
 while True:
 
     pergunta = input("👤 Você: ")
 
     if pergunta.lower() == "sair":
+
         print("\n🔌 Encerrando ChargeWise AI...")
         break
 
@@ -115,3 +133,4 @@ while True:
     print(resposta)
 
     print("\n" + "-" * 50 + "\n")
+```
