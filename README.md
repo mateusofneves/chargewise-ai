@@ -13,7 +13,7 @@ Projeto desenvolvido para o **EV Challenge 2026 — GoodWe** em parceria com a *
 | Mateus de Oliveira Fernandes Neves | RM 572431 |
 | Pedro Soares de Souza | RM 571285 |
 | Paulo Henrique Lira Bilac de Araujo | RM 569496 |
-| Olavo Dadario Vianna Barreto | RM 569496 |
+| Olavo Dadario Vianna Barreto | RM 569272 |
 | Angela Sousa Takezawa | RM 570797 |
 
 ---
