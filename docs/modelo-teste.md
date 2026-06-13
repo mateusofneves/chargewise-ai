@@ -42,3 +42,8 @@ O teste será considerado válido caso o chatbot:
 - mantenha contexto sobre estações de recarga;
 - responda corretamente dúvidas sobre energia e carregamento;
 - demonstre comportamento coerente com o cenário GoodWe/FIAP.
+
+---
+
+# Testes Após atualização do System Prompt, adição do histórico e few-shot
+
