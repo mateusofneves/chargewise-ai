@@ -98,3 +98,25 @@ Para corrigir esse comportamento, foram realizadas as seguintes alterações:
 - Maior velocidade de resposta.
 - Melhor controle sobre o escopo do chatbot.
 - Atendimento ao requisito de iteração do system prompt solicitado na Sprint 2.
+
+## Casos de Teste Realizados
+
+Para validar o funcionamento do chatbot, foram executados testes contemplando consultas relacionadas ao contexto GoodWe, infraestrutura de recarga e tratamento de perguntas fora do escopo.
+
+| Caso | Pergunta Enviada | Resposta Esperada | Avaliação |
+|--------|-----------------|------------------|------------|
+| 1 | Quantos carregadores existem disponíveis? | Informar que existem 2 carregadores disponíveis no sistema. | Adequada |
+| 2 | Qual o melhor horário para recarregar meu veículo? | Informar que o horário recomendado é entre 22h e 6h devido à menor demanda energética. | Adequada |
+| 3 | Posso integrar um carregador GoodWe com energia solar? | Explicar que as soluções GoodWe permitem integração com sistemas fotovoltaicos para maior eficiência energética. | Adequada |
+| 4 | Sou síndico. Vale a pena instalar carregadores no condomínio? | Explicar benefícios, viabilidade, compartilhamento de infraestrutura e gestão energética. | Adequada |
+| 5 | Quero fritar um ovo. | Identificar que a pergunta está fora do escopo e informar que o assistente é especializado apenas em mobilidade elétrica e carregadores veiculares. | Adequada |
+
+## Resultados Obtidos
+
+Os testes demonstraram que o chatbot:
+
+- Responde adequadamente perguntas relacionadas a carregadores GoodWe e mobilidade elétrica.
+- Utiliza o contexto definido no System Prompt para manter as respostas dentro do domínio do projeto.
+- Mantém histórico de conversa para fornecer respostas contextualizadas.
+- Adapta o nível de detalhamento conforme o perfil do usuário.
+- Recusa corretamente perguntas que não possuem relação com o contexto de carregamento veicular e energia.
