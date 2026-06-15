@@ -1,8 +1,8 @@
 # ChargeWise AI
 
-Assistente inteligente para gestão comercial de carregadores veiculares elétricos.
+Assistente inteligente especializado em carregadores veiculares GoodWe, mobilidade elétrica e infraestrutura de recarga.
 
-Projeto desenvolvido para o **EV Challenge 2026 — GoodWe** em parceria com a **FIAP**.
+Projeto desenvolvido para o EV Challenge 2026 — GoodWe em parceria com a FIAP.
 
 ---
 
@@ -20,136 +20,180 @@ Projeto desenvolvido para o **EV Challenge 2026 — GoodWe** em parceria com a *
 
 # Sobre o Projeto
 
-O projeto **ChargeWise AI** foi desenvolvido com o objetivo de auxiliar operadores comerciais na gestão inteligente de estações de recarga para veículos elétricos.
+O ChargeWise AI é um chatbot inteligente desenvolvido para auxiliar usuários, síndicos, administradores de condomínio, operadores e profissionais da área elétrica com informações relacionadas a carregadores veiculares, infraestrutura de recarga e soluções GoodWe.
 
-A proposta consiste em um chatbot contextualizado com inteligência artificial capaz de responder dúvidas operacionais, fornecer informações sobre sessões de recarga, auxiliar no gerenciamento energético e melhorar a comunicação com usuários dos eletropostos.
+Durante a Sprint 2 foram implementadas técnicas de Inteligência Artificial Generativa para tornar as respostas mais contextualizadas, coerentes e alinhadas ao cenário do EV Challenge 2026.
 
-O sistema foi pensado como uma solução operacional real para o contexto comercial do EV Challenge 2026 da GoodWe.
+O sistema utiliza o modelo Llama 3.2 1B executado localmente através do Ollama, permitindo interações em linguagem natural e respostas especializadas no contexto de mobilidade elétrica.
+
+- Link para o vídeo com funicionamento e testes: [ChargeWise-AI](https://youtu.be/Utbi84uknSo)
 
 ---
 
 # Problema Abordado
 
-Empresas e operadores comerciais que utilizam eletropostos enfrentam diversos desafios operacionais, como:
+Com o crescimento da adoção de veículos elétricos, surgem desafios relacionados à instalação, gerenciamento e utilização de carregadores veiculares.
 
-- Falta de monitoramento inteligente das estações;
-- Dificuldade no gerenciamento de potência elétrica;
-- Ausência de comunicação automatizada com usuários;
-- Controle manual de sessões de recarga;
-- Dificuldade na organização operacional dos eletropostos;
-- Falta de suporte automatizado para usuários.
+Entre os principais desafios estão:
 
-O ChargeWise AI busca reduzir esses problemas através de atendimento automatizado e contextualizado.
+Falta de suporte automatizado aos usuários;
+Dúvidas sobre instalação e utilização dos carregadores;
+Gerenciamento da demanda energética;
+Compartilhamento da infraestrutura em condomínios;
+Integração com sistemas de energia solar;
+Eficiência energética e balanceamento de carga.
 
----
-
-# Objetivo do Chatbot
-
-O ChargeWise AI tem como principais objetivos:
-
-- Informar disponibilidade dos carregadores;
-- Responder dúvidas sobre recarga;
-- Auxiliar operadores comerciais;
-- Informar status das estações;
-- Melhorar a experiência dos usuários;
-- Facilitar o gerenciamento operacional dos eletropostos.
+O ChargeWise AI foi desenvolvido para auxiliar na solução desses desafios através de atendimento automatizado e contextualizado.
 
 ---
 
-# Persona Principal
+# Objetivos
 
-## Operador Comercial
+- Responder dúvidas sobre carregadores GoodWe;
+- Auxiliar usuários de veículos elétricos;
+- Fornecer orientações sobre infraestrutura de recarga;
+- Apoiar síndicos e administradores de condomínio;
+- Explicar conceitos de eficiência energética;
+- Fornecer informações sobre integração com energia solar;
+- Melhorar a experiência dos usuários através de IA Generativa.
+- Funcionalidades Implementadas
+- Contextualização especializada através de System Prompt;
+- Memória conversacional utilizando histórico de mensagens;
+- Few-Shot Prompting para direcionamento das respostas;
+- Adaptação da linguagem conforme o perfil do usuário;
+- Controle de escopo para evitar respostas fora do contexto do projeto;
+- Histórico de conversa para diálogos contínuos;
+- Respostas especializadas no contexto GoodWe;
+- Escalonamento para suporte técnico quando necessário.
+- Personas Atendidas
+- Usuário Final
 
-A solução foi pensada principalmente para operadores responsáveis pela administração de estações de carregamento veicular.
+Busca informações sobre carregamento, horários recomendados e utilização dos carregadores.
 
-O chatbot auxiliará no monitoramento operacional, organização do sistema e atendimento automatizado aos usuários.
+## Síndico ou Administrador
+
+Necessita avaliar viabilidade de instalação, compartilhamento da infraestrutura e gestão energética.
+
+## Técnico ou Eletricista
+
+Precisa de informações relacionadas à infraestrutura elétrica, dispositivos de proteção e boas práticas de instalação.
 
 ---
 
 # Tecnologias Utilizadas
 
-| Tecnologia | Função |
+|Tecnologia	| Função |
 |---|---|
-| Python | Desenvolvimento do chatbot |
-| Google Colab | Ambiente de testes |
-| Markdown | Documentação do projeto |
-| Draw.io | Desenvolvimento do fluxograma |
-| GitHub | Versionamento e organização |
+|Python	| Desenvolvimento do chatbot |
+|Ollama	| Execução local do modelo de IA |
+|Llama 3.2 1B	| Modelo de linguagem |
+|Google Colab	| Ambiente de desenvolvimento |
+|Markdown	| Documentação |
+|Draw.io	| Fluxograma |
+|GitHub	| Versionamento |
 
 ---
 
-# Justificativa Técnica
-
-A utilização de um chatbot contextualizado permite criar respostas mais naturais e específicas para o ambiente comercial de carregamento veicular.
-
-O protótipo desenvolvido na Sprint 1 foi pensado para validar:
-
-- fluxo de funcionamento do sistema;
-- experiência do usuário;
-- contexto operacional;
-- comportamento esperado do chatbot.
-
-A estrutura criada também prepara o projeto para futuras integrações com APIs de IA e sistemas reais de monitoramento de eletropostos.
-
----
-
-# Funcionalidades Previstas
-
-- Consulta de disponibilidade de carregadores;
-- Informações sobre sessões de recarga;
-- Respostas automáticas para dúvidas frequentes;
-- Informações sobre consumo energético;
-- Status operacional das estações;
-- Alertas relacionados à potência elétrica.
-
----
-
-# Fluxo Básico do Sistema
-
+# Arquitetura da Solução
 ```text
 Usuário
    ↓
-Interface do Chatbot
+Interface Conversacional
    ↓
-System Prompt + Contexto
+System Prompt
    ↓
-LLM Ollama (Llama 3.2)
+Few-Shot Prompting
    ↓
-Geração da Resposta
+Base de Conhecimento GoodWe
+   ↓
+Histórico de Conversa
+   ↓
+Llama 3.2 1B (Ollama)
+   ↓
+Resposta Contextualizada
    ↓
 Usuário
 ```
 
 ---
 
-# Modelo de Testes
+# Técnicas de IA Aplicadas
 
-| Pergunta | Resposta Esperada |
-|---|---|
-| Quantos carregadores estão disponíveis? | Existem carregadores disponíveis no momento. |
-| Qual o melhor horário para recarga? | O horário recomendado é durante períodos de menor demanda energética. |
-| O sistema evita sobrecarga? | Sim, o sistema realiza controle inteligente de potência. |
-| Qual o status da estação de recarga? | A estação está operando normalmente. |
-| Quanto tempo leva a recarga? | O tempo varia conforme bateria e potência disponível. |
+### System Prompt
+
+Define o comportamento do assistente e restringe sua atuação ao contexto GoodWe, mobilidade elétrica e infraestrutura de recarga.
+
+### Few-Shot Prompting
+
+Utilização de exemplos de perguntas e respostas para orientar o comportamento esperado do modelo.
+
+### Memória Conversacional
+
+Implementação de histórico de mensagens para permitir conversas contínuas e contextualizadas.
+
+### Context Injection
+
+Inserção de informações específicas relacionadas ao cenário GoodWe e ao EV Challenge.
+
+### Ajuste de Parâmetros
+
+Configuração de temperatura e limite de geração de tokens para melhorar consistência e desempenho.
 
 ---
 
-# System Prompt Base
+# Base de Conhecimento Utilizada
 
-```text
-Você é o ChargeWise AI, um assistente especializado na gestão comercial de carregadores veiculares elétricos.
+O chatbot foi configurado utilizando informações relacionadas a:
 
-Seu objetivo é auxiliar operadores comerciais e usuários com informações sobre:
-- disponibilidade de carregadores;
-- sessões de recarga;
-- consumo energético;
-- status operacional das estações;
-- balanceamento de potência.
+Carregadores GoodWe;
+Veículos elétricos;
+Infraestrutura de recarga;
+Gestão energética;
+Balanceamento inteligente de carga;
+Integração com energia solar;
+Utilização de carregadores em condomínios.
 
-Responda de forma clara, objetiva e profissional.
+---
 
-Nunca invente informações inexistentes.
-```
+# Resultados Obtidos
+
+- Responde adequadamente perguntas relacionadas ao contexto GoodWe;
+- Mantém o escopo definido pelo projeto;
+- Utiliza memória de conversa para melhorar a continuidade das interações;
+- Adapta respostas ao perfil do usuário;
+- Recusa perguntas fora do domínio do projeto;
+- Mantém coerência durante diálogos contínuos.
+- Melhorias Implementadas Durante a Sprint 2
+- Refinamento do System Prompt;
+- Implementação de memória conversacional;
+- Inclusão de Few-Shot Prompting;
+- Ajuste dos parâmetros do modelo;
+- Otimização do contexto enviado ao LLM;
+- Controle de escopo para respostas fora do domínio.
+
+---
+
+# Como Executar
+
+### Pré-requisitos
+Python 3.10+
+Ollama instalado
+Instalação
+pip install ollama
+Download do Modelo
+ollama pull llama3.2:1b
+
+### Execução
+
+Abra o notebook disponível na pasta:
+
+colab/chatbot_teste.ipynb
+
+ou execute o script Python principal do projeto.
+
+Para encerrar o chatbot:
+
+sair
 
 ---
 
@@ -158,20 +202,26 @@ Nunca invente informações inexistentes.
 ```text
 chargewise-ai/
 │
-├── README.md
-├── entregavel.txt
-│
 ├── docs/
-│   ├── fluxograma.png
-│   ├── modelo-testes.md
+│   ├── goodwe chatbot.drawio.png
+│   ├── modelo-teste.md
 │   └── system-prompt.md
 │
 ├── colab/
-│   └── chatbot_teste.ipynb
+│   ├── chatbot.py
+│   └── chatbot_charge.py
 │
-└── assets/
+├── assets/
+│   ├── chatbot-demo-1.jpeg
+│   ├── chatbot-demo-2.jpeg
+│   ├── chatbot-demo-3.jpeg
+│   └── chatbot-demo-4.jpeg
+|
+└── README.md
 ```
 
-# EV Challenge 2026 — GoodWe
+---
 
-Projeto acadêmico desenvolvido para o desafio EV Challenge 2026 da GoodWe em parceria com a FIAP.
+## EV Challenge 2026 — GoodWe
+
+Projeto acadêmico desenvolvido para o EV Challenge 2026 da GoodWe em parceria com a FIAP, com foco na aplicação de Inteligência Artificial Generativa para suporte a usuários de carregadores veiculares e soluções de mobilidade elétrica.
